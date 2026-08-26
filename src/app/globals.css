@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Kestrel Power Systems
+   Three design directions, each locked to a single theme and a single accent.
+   Every direction supplies the same token contract so shared components
+   (forms, reveals, photography) inherit the right look automatically.
+--------------------------------------------------------------------------- */
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-text: var(--accent-text);
+  --color-on-accent: var(--on-accent);
+  --color-seal: var(--seal);
+
+  --radius-card: var(--r-card);
+  --radius-control: var(--r-control);
+
+  --font-display: var(--f-display);
+  --font-mono: var(--f-mono);
+}
+
+/* Direction A. Substation. Navy-locked dark, electric blue accent, 4px shape. */
+.theme-substation {
+  --bg: #0b1220;
+  --surface: #0f172a;
+  --surface-2: #111827;
+  --ink: #f8fafc;
+  --ink-2: #cbd5e1;
+  --ink-3: #94a3b8;
+  --line: rgb(248 250 252 / 0.1);
+  --line-strong: rgb(248 250 252 / 0.2);
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-text: #60a5fa;
+  --on-accent: #ffffff;
+  --seal: #d4af37;
+  --r-card: 4px;
+  --r-control: 4px;
+  --grid-line: rgb(248 250 252 / 0.06);
+  color-scheme: dark;
+}
+
+/* Direction B. Blueprint. Light-locked Swiss grid, electric blue accent, square shape. */
+.theme-blueprint {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --ink: #0f172a;
+  --ink-2: #334155;
+  --ink-3: #5b6879;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-text: #1d4ed8;
+  --on-accent: #ffffff;
+  --seal: #1d4ed8;
+  --r-card: 0px;
+  --r-control: 0px;
+  --grid-line: #e2e8f0;
+  color-scheme: light;
+}
+
+/* Direction C. Meridian. Graphite-locked dark, gold accent.
+   Documented shape rule: cards 14px, interactive controls fully rounded. */
+.theme-meridian {
+  --bg: #0c1017;
+  --surface: #111827;
+  --surface-2: #182131;
+  --ink: #ffffff;
+  --ink-2: #d4dae3;
+  --ink-3: #9aa4b2;
+  --line: rgb(255 255 255 / 0.09);
+  --line-strong: rgb(255 255 255 / 0.18);
+  --accent: #d4af37;
+  --accent-hover: #e5c767;
+  --accent-text: #e5c767;
+  --on-accent: #0c1017;
+  --seal: #d4af37;
+  --r-card: 14px;
+  --r-control: 999px;
+  --grid-line: rgb(255 255 255 / 0.05);
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--bg, #0b1220);
+  color: var(--ink, #f8fafc);
+  font-family: var(--f-display, ui-sans-serif, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Technical drawing grid. Used to organise real content, never as free decoration. */
+.grid-rule {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+.duotone {
+  filter: grayscale(1) contrast(1.08) brightness(0.9);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
