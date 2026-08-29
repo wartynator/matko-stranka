@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Self-hosted typefaces. Each direction uses exactly one sans and one mono. */
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "@fontsource-variable/archivo";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource-variable/outfit";
+@import "@fontsource-variable/jetbrains-mono";
+
 /* ---------------------------------------------------------------------------
    Kestrel Power Systems
    Three design directions, each locked to a single theme and a single accent.
@@ -21,12 +30,15 @@
   --color-accent-text: var(--accent-text);
   --color-on-accent: var(--on-accent);
   --color-seal: var(--seal);
-
-  --radius-card: var(--r-card);
-  --radius-control: var(--r-control);
+  --color-danger: var(--danger);
 
   --font-display: var(--f-display);
   --font-mono: var(--f-mono);
+
+  /* Motion curves. Built-in CSS easings are too weak for UI. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /* Direction A. Substation. Navy-locked dark, electric blue accent, 4px shape. */
@@ -43,10 +55,14 @@
   --accent-hover: #1d4ed8;
   --accent-text: #60a5fa;
   --on-accent: #ffffff;
-  --seal: #d4af37;
-  --r-card: 4px;
-  --r-control: 4px;
+  --seal: #60a5fa;
+  --danger: #f87171;
+  --radius-card: 4px;
+  --radius-control: 4px;
+  --radius-input: 4px;
   --grid-line: rgb(248 250 252 / 0.06);
+  --f-display: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --f-mono: "Geist Mono Variable", ui-monospace, monospace;
   color-scheme: dark;
 }
 
@@ -65,9 +81,13 @@
   --accent-text: #1d4ed8;
   --on-accent: #ffffff;
   --seal: #1d4ed8;
-  --r-card: 0px;
-  --r-control: 0px;
+  --danger: #c81e1e;
+  --radius-card: 0px;
+  --radius-control: 0px;
+  --radius-input: 0px;
   --grid-line: #e2e8f0;
+  --f-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
   color-scheme: light;
 }
 
@@ -87,9 +107,36 @@
   --accent-text: #e5c767;
   --on-accent: #0c1017;
   --seal: #d4af37;
-  --r-card: 14px;
-  --r-control: 999px;
+  --danger: #f87171;
+  --radius-card: 14px;
+  --radius-control: 999px;
+  --radius-input: 12px;
   --grid-line: rgb(255 255 255 / 0.05);
+  --f-display: "Outfit Variable", ui-sans-serif, system-ui, sans-serif;
+  --f-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  color-scheme: dark;
+}
+
+/* M&J Elektro. Blueprint navy with direct cobalt actions and square geometry. */
+.theme-mj {
+  --bg: #07101f;
+  --surface: #091426;
+  --surface-2: #0a1629;
+  --ink: #ffffff;
+  --ink-2: #b8c4d6;
+  --ink-3: #8495ad;
+  --line: rgb(255 255 255 / 0.1);
+  --line-strong: rgb(255 255 255 / 0.22);
+  --accent: #2878f0;
+  --accent-hover: #3d89fa;
+  --accent-text: #73a7f8;
+  --on-accent: #ffffff;
+  --danger: #f87171;
+  --radius-card: 0px;
+  --radius-control: 0px;
+  --radius-input: 0px;
+  --f-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
   color-scheme: dark;
 }
 
